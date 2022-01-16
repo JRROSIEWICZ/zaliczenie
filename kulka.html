@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA=Compatible" content="IE=edge">
+    <title>Documemt</title>
+<style>
+ #i1 {position: absolute; top: 20px; width: 50px; height: 50px;}
+ #i1 img {width: 50px; height: 50px;}
+ #a1 {position: absolute; left: 200px; top: 500px; height: 10px; width: 200px;
+  border: black 1px solid }
+</style>
+<script>
+    let id1, xx, yy;
+    function StartMove(){
+        document.addEventListener('keydown', keyDown);
+        xx=document.documentElement.clientWidth;
+        yy=document.documentElement.clientHeight;
+        console.log(xx, yy);
+        i1.style.left=xx-70+"px";
+        i1.style.top=yy+"px";
+        id1=setInterval("gs()", 30);
+    }
+    let x=200;
+    function keyDown(e){
+        let stepSize=10;
+        if (e.keyCode === 37) x-=stepSize;
+        if(e.keyCode === 39) x+=stepSize;
+        a1.style.left=x+"px";
+    }
+    let k=1, l=1;
+    function gs(){
+        xx-=10*k; yy-=10*l;
+        if(xx<0) k=-1; if(yy<0) l=-1;
+        if (xx+70>document.documentElement.clientWidth) k=1;
+        if(yy+50>document.documentElement.clientHeight) l=1;
+        i1.style.left=xx+"px";
+        i1.style.top=yy+"px";
+    }
+</script>
+</head>
+<body>
+    <div id="i1" onclick="StartMove()"><img src="kolko.jpg"></div>
+ <div id="a1"></div>
+</body>
+</html>

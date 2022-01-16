@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{position: absolute;}
+        .mini{border:black 2px solid; width: 100px;height: 100px;}
+        .mini img {width: 100px;height: 100px;}
+    
+    </style>
+    <script>
+        //let TabId=['a1','a2','a3','a4'];
+        let TabImg=['kaf1','kaf2','kaf3','kaf4','kaf1','kaf2','kaf3','kaf4']
+        let TabPos=[[50,100,0],[150,100,0],[50,200,0],[150,200,0],[250,200,0],[250,100,0],[50,300,0],[150,300,0]]
+        function zakryj(){
+            for(let i=0;i<8;i++)
+            {
+                for (let i=0; i<8; i++)
+                {
+                    TabDiv[i].innerHTML="<img src='kaf5.jpg'>";
+                }
+                console.log(TabDiv[i]);
+            }
+        }
+        function odkryj(a){
+            for(let i=0;i<8;i++){
+                if(a==TabDiv[i]) a.innerHTML="<img src="+TabImg[i]+".jpg>";
+            }
+            
+        }
+        function losuj()
+        {
+            for (let i=0; i<4; i++)TabPos[i][2]=0;
+            let x, i=0;
+            
+            while(i<4){
+            x=Math.floor(Math.random()*4);
+            if (TabPos[x][2]==0){
+            TabDiv[i].style.left=TabPos[x][0]+'px';
+            TabDiv[i].style.top=TabPos[x][1]+'px';
+            i++; TabPos[x][2]=1;
+            }}
+        }
+        let p=0,one;
+        function Graj(a){
+            if (p==0){
+                zakryj();
+            odkryj(a);
+            one=a;
+                p=1;
+            }else{
+                odkryj(a);
+                if(one.innerHTML==a.innerHTML)
+                {
+                    one.style.visibility="hidden";
+                    a.style.visibility="hidden";
+                }
+                p=0;
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <input type="button" value="zakryj"onclick="zakryj()">
+    <input type="button" value="losuj"onclick="losuj()">
+    <div class="mini" id="a1" style="left:50px;top: 100px;" onclick="Graj(this)"><img src='kaf1.jpg'></div>
+    <div class="mini" id="a2" style="left:150px;top: 100px;"onclick="Graj(this)"><img src='kaf2.jpg'></div>
+    <div class="mini" id="a3" style="left:50px;top: 200px;"onclick="Graj(this)"><img src='kaf3.jpg'></div>
+    <div class="mini" id="a4" style="left:150px;top: 200px;"onclick="Graj(this)"><img src='kaf4.jpg'></div>
+    <div class="mini" id="a5" style="left:250px;top: 200px;" onclick="Graj(this)"><img src='kaf1.jpg'></div>
+    <div class="mini" id="a6" style="left:250px;top: 100px;"onclick="Graj(this)"><img src='kaf2.jpg'></div>
+    <div class="mini" id="a7" style="left:50px;top: 300px;"onclick="Graj(this)"><img src='kaf3.jpg'></div>
+    <div class="mini" id="a8" style="left:150px;top: 300px;"onclick="Graj(this)"><img src='kaf4.jpg'></div>
+
+    <div id="ekran"></div>
+    <script>
+        let TabDiv=document.querySelectorAll('div');
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+
+    div
+    {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border:black 1px solid;
+    }
+
+    div img 
+    {
+			width: 100px;
+			height: 100px;
+    }
+
+    </style>
+    <script>
+
+    function Mieszaj()
+        {
+            for(let i=0; i<16; i++)
+            {
+                TabPos[i][2]=0;
+            }
+						
+            let x, i=0;
+            while(i<16)
+            {
+                x=Math.floor(Math.random()*16);
+                if(TabPos[x][2]==0)
+                {
+                    TabDiv[i].style.left=TabPos[x][0];
+                    TabDiv[i].style.top=TabPos[x][1];
+                    i++;
+                    TabPos[x][2]=1;
+                }
+            }
+        }
+
+    function Graj(x)
+    {
+			let bufor;
+				if (a33.style.left==x.style.left)
+					{
+						bufor=a33.style.top;
+						a33.style.top=x.style.top;
+						x.style.top=bufor;
+					}
+				
+				let muflon;
+				if (a33.style.top==x.style.top)
+					{
+						muflon=a33.style.left;
+						a33.style.left=x.style.left;
+						x.style.left=muflon;
+					}
+    }
+
+    </script>
+</head>
+<body>
+
+	<input type="button" value="MIESZAJ" onclick="Mieszaj()"> 
+
+<script>
+
+    var num=4, newdiv, divIdName;
+            for(let i=0; i<num; i++)
+            {
+                for(let j=0; j<num; j++)
+                {
+											newdiv=document.createElement('div');
+											divIdName='a' + i + j;
+											newdiv.setAttribute('id', divIdName);
+											newdiv.style.top = 100 + 100*i + "px";
+											newdiv.style.left = 100 + 100*j + "px";
+											if(i*j!=9)
+											newdiv.innerHTML="<img src='slice_"+i+"_"+j+".jpg'>";
+											newdiv.addEventListener('click', function(){ Graj(this); });
+											document.body.appendChild(newdiv);
+											
+                }
+            }
+					
+					let TabDiv=document.querySelectorAll('div');
+					let TabPos=[];
+					for(let i=0; i<16; i++)
+						{
+							TabPos[i]=[];
+						}
+					for(let i=0; i<16; i++)
+						{
+							TabPos[i][0]=TabDiv[i].style.left;
+							TabPos[i][1]=TabDiv[i].style.top;
+							TabPos[i][2]=0;
+							console.log(TabPos[i][0]);
+						}
+</script>
+
+<div style='top:100px;left:510px;border:0px'><img style='height:400px;width:400px;'src="main.jpg"</div>
+
+</body>
+</html>

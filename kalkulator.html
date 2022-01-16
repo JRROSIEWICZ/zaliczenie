@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+    <script>
+        function witaj(){
+            let a=prompt("Podaj imie", "");
+            alert("Witaj na mojej stronie "+a);
+        }
+        function dodaj(){
+            form1.c.value=parseFloat(form1.a.value)+parseFloat(form1.b.value);
+        }
+        function odejmij(){
+            form1.c.value=parseFloat(form1.a.value)-parseFloat(form1.b.value);
+        }
+        function mnozenie(){
+            form1.c.value=parseFloat(form1.a.value)*parseFloat(form1.b.value);
+        }
+        function dzielenie(){
+            form1.c.value=parseFloat(form1.a.value)/parseFloat(form1.b.value);
+        }
+        function pierwiastek(){
+            let a=prompt("Podaj wartosc do licznika pierwiastka", "");
+            alert("wartość pierwiastka z liczby "+a+" wynosi "+Math.sqrt(a));
+        }
+        function silnia(){
+            let a=prompt("Podaj liczbe do dzialania silnia", "");
+            let b=1;
+            for(let i=1; i<=a; i++){
+                b=b*i
+            }
+            alert("wartość silnia liczby "+a+" wynosi "+b);
+        }
+        function potega(){
+            let a=prompt("Podaj liczbe do potegowania ", "");
+            alert("wartość 2 do potegi "+a+" wynosi "+Math.pow(2, a));
+        }
+    </script>
+    
+</head>
+<body>
+    <h1>Czesc</h1>
+    <div id="jeden" onclick="witaj()"></div>
+    <div id="dwa">
+        <form name="form1">
+            <fieldset><legend>Kalkulator</legend>
+                <input type="text" name="a">
+                <input type="button" value="+" onclick="dodaj()">
+                <input type="button" value="-" onclick="odejmij()">
+                <input type="button" value="*" onclick="mnozenie()">
+                <input type="button" value="/" onclick="dzielenie()">
+
+                <input type="text" name="b">
+                <p>=</p>
+                <input type="text" name="c">
+                <br>
+                <hr>
+                <input type="button" value="sqrt" onclick="pierwiastek()">
+                <input type="button" value="!" onclick="silnia()">
+                <input type="button" value="2^n" onclick="potega()">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
